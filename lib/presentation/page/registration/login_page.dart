@@ -43,6 +43,7 @@ class _LogInState extends State<LogIn> {
                     color: blueGrotto.withOpacity(0.4),
                   ),
                   hintText: "Enter your email id",
+                  
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: blueGrotto, width: 1),
                     borderRadius: BorderRadius.circular(12),
