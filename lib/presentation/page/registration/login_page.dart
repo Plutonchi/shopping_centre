@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_centre/utils/app_constants/color/colors.dart';
 
+import '../../../utils/app_constants/widgets/field_content.dart';
+
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
 
@@ -26,6 +28,8 @@ class _LogInState extends State<LogIn> {
         padding: EdgeInsets.all(10),
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Email ID",
@@ -36,19 +40,27 @@ class _LogInState extends State<LogIn> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.email_outlined,
-                    color: blueGrotto.withOpacity(0.4),
-                  ),
-                  hintText: "Enter your email id",
-                  
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: blueGrotto, width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+              FieldContent(
+                  hintText: "Enter your email id", icon: Icons.email_outlined),
+              Text(
+                "Password",
+                style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontSize: 14,
+                  color: black,
+                  fontWeight: FontWeight.w400,
                 ),
+              ),
+              FieldContent(
+                  hintText: "Enter your password", icon: Icons.lock_outline),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    child: Text("Forgot password?"),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ],
           ),
