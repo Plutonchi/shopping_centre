@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
 import 'package:shopping_centre/utils/app_constants/color/colors.dart';
 
 import '../../../utils/app_constants/widgets/field_content.dart';
@@ -14,55 +15,150 @@ class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Login",
-          style: TextStyle(
-            fontFamily: "Abhaya",
-            fontSize: 32,
-            color: white,
-          ),
-        ),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Email ID",
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: 14,
-                  color: black,
-                  fontWeight: FontWeight.w400,
+      backgroundColor: white,
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  height: 50,
                 ),
-              ),
-              FieldContent(
-                  hintText: "Enter your email id", icon: Icons.email_outlined),
-              Text(
-                "Password",
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontSize: 14,
-                  color: black,
-                  fontWeight: FontWeight.w400,
+                Text(
+                  "Войти",
+                  style: TextStyle(
+                      fontFamily: "Abhaya",
+                      fontSize: 32,
+                      color: black,
+                      fontWeight: FontWeight.w700),
                 ),
-              ),
-              FieldContent(
-                  hintText: "Enter your password", icon: Icons.lock_outline),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    child: Text("Forgot password?"),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ],
+                SizedBox(
+                  height: 140,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Адрес электронной почты",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 14,
+                        color: black,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    FieldContent(
+                        obscureText: false,
+                        hintText: "Введите свой адрес электронной почты",
+                        icon: Icons.email_outlined),
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Text(
+                      "Пароль",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontSize: 14,
+                        color: black,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    FieldContent(
+                        obscureText: true,
+                        hintText: "Введите ваш пароль",
+                        icon: Icons.lock_outline),
+                    SizedBox(
+                      height: 11,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          child: Text(
+                            "Забыли пароль?",
+                            style: TextStyle(
+                                color: black,
+                                decoration: TextDecoration.underline),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 22,
+                    ),
+                    Center(
+                      child: Container(
+                        width: 180,
+                        height: 40,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: blueGrotto,
+                            elevation: 7,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Text(
+                            "Войти",
+                            style: TextStyle(
+                                fontFamily: "Abhaya",
+                                fontSize: 16,
+                                color: white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 80,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Вы новый \nПользователь?",
+                      style: TextStyle(
+                        fontFamily: "Abhaya",
+                        fontSize: 14,
+                        letterSpacing: 1,
+                        color: black1,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
+                      },
+                      child: Text(
+                        "Регистрация",
+                        style: TextStyle(
+                          fontFamily: "Abhaya",
+                          fontSize: 14,
+                          letterSpacing: 1,
+                          color: black1,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

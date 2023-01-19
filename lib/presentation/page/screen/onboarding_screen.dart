@@ -69,11 +69,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
-                        _pageController
-                            .nextPage(
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.ease)
-                            .then((value) => LogIn());
+                        if (_pageIndex == demoData.length - 1) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => LogIn(),
+                            ),
+                          );
+                        }
+                        _pageController.nextPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.ease);
                       },
                       style: ElevatedButton.styleFrom(
                           shape: CircleBorder(), backgroundColor: blueg),
