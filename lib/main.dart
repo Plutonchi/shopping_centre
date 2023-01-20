@@ -1,6 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_centre/presentation/page/btn_bar.dart';
+import 'package:shopping_centre/presentation/page/home_page.dart';
 import 'package:shopping_centre/presentation/page/screen/onboarding_screen.dart';
+import 'package:shopping_centre/provider/dark_theme_provider.dart';
+import 'package:shopping_centre/services/dark_theme_prefs.dart';
+import 'package:shopping_centre/utils/app_constants/theme/theme_data.dart';
 import 'data/firebase_options.dart';
 
 void main() async {
@@ -11,14 +17,43 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  DarkThemeProvider themeChangeProvider = DarkThemeProvider();
+
+  void getCurrentAppTheme() async {
+    themeChangeProvider.setDarkTheme =
+        await themeChangeProvider.darkThemePrefs.getTheme();
+  }
+
+  @override
+  void initState() {
+    getCurrentAppTheme();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: OnboardingScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) {
+          return themeChangeProvider;
+        })
+      ],
+      child:
+          Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
+        return MaterialApp(
+          theme: Styles.themeData(themeProvider.getDarkTheme, context),
+          debugShowCheckedModeBanner: false,
+          home: BottomBar(),
+        );
+      }),
     );
   }
 }
