@@ -4,8 +4,17 @@ import 'package:shopping_centre/utils/app_constants/widgets/catigories_widget.da
 import 'package:shopping_centre/utils/app_constants/widgets/text_widgets.dart';
 
 class CatigoriesScreen extends StatelessWidget {
-  const CatigoriesScreen({super.key});
-
+  CatigoriesScreen({super.key});
+  final List<Map<String, dynamic>> _catInfo = [
+    {
+      'imgPath': 'assets/images/categories_image/beautifuly.png',
+      'catText': 'Украшения '
+    },
+    {
+      'imgPath': 'assets/images/categories_image/accsesories.png',
+      'catText': 'Украшения и аксессуары'
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     final utils = Utils(context);
@@ -30,13 +39,12 @@ class CatigoriesScreen extends StatelessWidget {
           mainAxisSpacing: 5,
           children: [
             ...List.generate(
-              31,
+              2,
               (index) {
                 return CategoriesWidget(
-                  catText: '',
-                  color: color,
-                  imgPath: '',
-                );
+                    catText: _catInfo[index]['catText'],
+                    color: color,
+                    imgPath: _catInfo[index]['imgPath']);
               },
             ),
           ],

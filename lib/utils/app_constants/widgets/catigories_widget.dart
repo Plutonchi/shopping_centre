@@ -43,7 +43,7 @@ class CategoriesWidget extends StatelessWidget {
             TextWidgets(
               text: catText,
               color: color,
-              size: 18,
+              size: 13.5,
               isTitle: true,
             ),
           ],
