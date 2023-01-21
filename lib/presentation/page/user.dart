@@ -123,9 +123,11 @@ class _UserScreenState extends State<UserScreen> {
                 ),
                 _listTiles(
                   color: color,
-                  title: "Выйти из системы",
+                  title: "Выйти из аккаунта",
                   icon: IconlyLight.logout,
-                  onPressed: () {},
+                  onPressed: () {
+                    showDiologLogOut();
+                  },
                 ),
               ],
             ),
@@ -133,6 +135,38 @@ class _UserScreenState extends State<UserScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> showDiologLogOut() async {
+    await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Row(
+              children: [
+                Text("Выйти"),
+              ],
+            ),
+            content: Text(
+              "Вы уверены, что хотите выйти?",
+              style: TextStyle(fontSize: 15),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text("Отмена"),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text("Ок"),
+              ),
+            ],
+          );
+        });
   }
 
   Widget _listTiles({
