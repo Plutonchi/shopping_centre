@@ -37,9 +37,9 @@ class _BottomBarState extends State<BottomBar> {
     return Scaffold(
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: _isDark ? Colors.white10 : Colors.black12,
+        unselectedItemColor: _isDark ? Colors.blue : Colors.black,
         backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
-        selectedItemColor: _isDark ? Colors.lightBlue.shade200 : Colors.black87,
+        selectedItemColor: _isDark ? Colors.lightBlue.shade200 : Colors.orange,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,

@@ -2,10 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_centre/presentation/page/btn_bar.dart';
-import 'package:shopping_centre/presentation/page/home_page.dart';
-import 'package:shopping_centre/presentation/page/screen/onboarding_screen.dart';
 import 'package:shopping_centre/provider/dark_theme_provider.dart';
-import 'package:shopping_centre/services/dark_theme_prefs.dart';
 import 'package:shopping_centre/utils/app_constants/theme/theme_data.dart';
 import 'data/firebase_options.dart';
 

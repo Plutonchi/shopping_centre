@@ -15,6 +15,9 @@ class CatigoriesScreen extends StatelessWidget {
       'catText': 'Украшения и аксессуары'
     },
   ];
+
+
+
   @override
   Widget build(BuildContext context) {
     final utils = Utils(context);
