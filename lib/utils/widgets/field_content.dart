@@ -9,6 +9,7 @@ class FieldContent extends StatefulWidget {
     required this.hintText,
     required this.obscureText,
     this.suffixIcon,
+    this.controller,
     this.suffixIcons,
   }) : super(key: key);
   bool obscureText = false;
@@ -16,6 +17,7 @@ class FieldContent extends StatefulWidget {
   final String hintText;
   final IconData? suffixIcon;
   final IconData? suffixIcons;
+  TextEditingController? controller = TextEditingController();
   @override
   State<FieldContent> createState() => _FieldContentState();
 }
@@ -24,6 +26,7 @@ class _FieldContentState extends State<FieldContent> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       obscureText: widget.obscureText,
       decoration: InputDecoration(
         suffixIcon: GestureDetector(

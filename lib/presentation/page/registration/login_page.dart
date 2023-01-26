@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:shopping_centre/presentation/page/home_page.dart';
 import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
-import 'package:shopping_centre/utils/app_constants/color/colors.dart';
+import 'package:shopping_centre/utils/pain/header_pain.dart';
 
-import '../../../utils/app_constants/widgets/field_content.dart';
+import '../../../utils/color/colors.dart';
+import '../../../utils/widgets/field_content.dart';
+import '../btn_bar.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -102,7 +106,15 @@ class _LogInState extends State<LogIn> {
                         width: 180,
                         height: 40,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                child: const BottomBar(),
+                                type: PageTransitionType.fade,
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: blueGrotto,
                             elevation: 7,

@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_centre/utils/app_constants/widgets/text_widgets.dart';
 
 import '../../provider/dark_theme_provider.dart';
+import '../../utils/widgets/text_widgets.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({super.key});

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_centre/presentation/page/cart.dart';
@@ -19,10 +17,10 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
   final List<Map<String, dynamic>> _pages = [
-    {'page': HomePage(), 'title': 'Home Screen'},
+    {'page': const HomePage(), 'title': 'Home Screen'},
     {'page': CatigoriesScreen(), 'title': 'Catigories Screen'},
-    {'page': CartScreen(), 'title': 'Cart Screen'},
-    {'page': UserScreen(), 'title': 'User Screen'},
+    {'page': const CartScreen(), 'title': 'Cart Screen'},
+    {'page': const UserScreen(), 'title': 'User Screen'},
   ];
   void _selectedPage(int index) {
     setState(() {
@@ -34,6 +32,7 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
     bool _isDark = themeState.getDarkTheme;
+
     return Scaffold(
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(

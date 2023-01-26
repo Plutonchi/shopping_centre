@@ -1,28 +1,24 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 
 class TextWidgets extends StatelessWidget {
   TextWidgets({
     super.key,
-    required this.text,
+    this.text,
     required this.color,
     required this.size,
     this.isTitle = false,
-    this.maxLine = 10,
   });
-  final String text;
+  final String? text;
   final Color color;
   final double size;
   bool isTitle;
-  int maxLine = 10;
+
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
-      maxLines: maxLine,
+      text!,
       style: TextStyle(
-        overflow: TextOverflow.ellipsis,
+        overflow: TextOverflow.visible,
         color: color,
         fontSize: size,
         fontWeight: isTitle ? FontWeight.bold : FontWeight.normal,

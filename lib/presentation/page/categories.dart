@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_centre/utils/app_constants/theme/utils.dart';
-import 'package:shopping_centre/utils/app_constants/widgets/catigories_widget.dart';
-import 'package:shopping_centre/utils/app_constants/widgets/text_widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_centre/data/service/api_handler.dart';
+import 'package:shopping_centre/presentation/model/catigories.dart';
+
+import '../../utils/theme/utils.dart';
+import '../../utils/widgets/catigories_widget.dart';
+import '../../utils/widgets/text_widgets.dart';
 
 class CatigoriesScreen extends StatelessWidget {
-  CatigoriesScreen({super.key});
-  final List<Map<String, dynamic>> _catInfo = [
-    {
-      'imgPath': 'assets/images/categories_image/beautifuly.png',
-      'catText': 'Украшения '
-    },
-    {
-      'imgPath': 'assets/images/categories_image/accsesories.png',
-      'catText': 'Украшения и аксессуары'
-    },
-  ];
-
-
+  const CatigoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,26 +25,39 @@ class CatigoriesScreen extends StatelessWidget {
           isTitle: true,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.count(
-          crossAxisCount: 3,
-          childAspectRatio: 220 / 360,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 5,
-          children: [
-            ...List.generate(
-              2,
-              (index) {
-                return CategoriesWidget(
-                    catText: _catInfo[index]['catText'],
-                    color: color,
-                    imgPath: _catInfo[index]['imgPath']);
+      body: FutureBuilder<List<CategoriesModel>>(
+          future: APIHandler.getAllCategories(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              Center(
+                child: Text("Произошла ошибка ${snapshot.error}"),
+              );
+            } else if (snapshot.data == null) {
+              const Center(
+                child: Text("Еще не добавлено ни одного продукта"),
+              );
+            }
+            return GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 220 / 360,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 5,
+              ),
+              itemBuilder: (context, index) {
+                return ChangeNotifierProvider.value(
+                    value: snapshot.data![index],
+                    child: const CategoryWidget());
               },
-            ),
-          ],
-        ),
-      ),
+            );
+          }),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_centre/presentation/page/registration/login_page.dart';
-import 'package:shopping_centre/utils/app_constants/color/colors.dart';
 
-import '../../../utils/app_constants/widgets/field_content.dart';
+import '../../../utils/color/colors.dart';
+import '../../../utils/widgets/field_content.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});

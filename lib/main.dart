@@ -1,13 +1,16 @@
+import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_centre/presentation/page/btn_bar.dart';
+import 'package:shopping_centre/presentation/page/screen/onboarding_screen.dart';
+import 'package:shopping_centre/services/MyHttpOverrides.dart';
 import 'package:shopping_centre/provider/dark_theme_provider.dart';
-import 'package:shopping_centre/utils/app_constants/theme/theme_data.dart';
+import 'package:shopping_centre/utils/theme/theme_data.dart';
 import 'data/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = MyHttpOverrides();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -41,14 +44,14 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(create: (_) {
           return themeChangeProvider;
-        })
+        }),
       ],
       child:
           Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
           debugShowCheckedModeBanner: false,
-          home: BottomBar(),
+          home: const OnboardingScreen(),
         );
       }),
     );

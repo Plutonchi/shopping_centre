@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_centre/utils/app_constants/color/colors.dart';
 
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {

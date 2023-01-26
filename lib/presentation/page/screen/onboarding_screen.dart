@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_centre/presentation/model/onboard.dart';
-import 'package:shopping_centre/utils/app_constants/color/colors.dart';
-import '../../../utils/app_constants/widgets/dotindicator.dart';
-import '../../../utils/app_constants/widgets/onboarding_content.dart';
+
+import '../../../utils/color/colors.dart';
+import '../../../utils/widgets/dotindicator.dart';
+import '../../../utils/widgets/onboarding_content.dart';
 import '../registration/login_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -14,9 +15,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   late PageController _pageController;
-
   int _pageIndex = 0;
-
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
@@ -59,11 +58,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ...List.generate(
                     demoData.length,
                     (index) => Padding(
-                      padding: EdgeInsets.only(right: 4),
-                      child: DotIndicator(isActive: index == _pageIndex),
-                    ),
+                        padding: EdgeInsets.only(right: 4),
+                        child: DotIndicator(isActive: index == _pageIndex)),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
                     height: 60,
                     width: 60,
@@ -72,9 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         if (_pageIndex == demoData.length - 1) {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(
-                              builder: (_) => LogIn(),
-                            ),
+                            MaterialPageRoute(builder: (_) => LogIn()),
                           );
                         }
                         _pageController.nextPage(

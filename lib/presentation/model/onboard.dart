@@ -7,7 +7,6 @@ class Onboard {
     required this.description,
   });
 }
-
 final List<Onboard> demoData = [
   Onboard(
     image: "assets/images/onboarding_image/onboard1.svg",
