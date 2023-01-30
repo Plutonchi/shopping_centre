@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:shopping_centre/presentation/page/home_page.dart';
 import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
-import 'package:shopping_centre/utils/pain/header_pain.dart';
-
+import 'package:shopping_centre/utils/theme/utils.dart';
 import '../../../utils/color/colors.dart';
 import '../../../utils/widgets/field_content.dart';
 import '../btn_bar.dart';
@@ -18,8 +16,9 @@ class LogIn extends StatefulWidget {
 class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
+    final Color color = Utils(context).color;
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
@@ -36,7 +35,7 @@ class _LogInState extends State<LogIn> {
                   style: TextStyle(
                       fontFamily: "Abhaya",
                       fontSize: 32,
-                      color: black,
+                      color: color,
                       fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
@@ -51,7 +50,7 @@ class _LogInState extends State<LogIn> {
                       style: TextStyle(
                         fontFamily: "Poppins",
                         fontSize: 14,
-                        color: black,
+                        color: color,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -70,7 +69,7 @@ class _LogInState extends State<LogIn> {
                       style: TextStyle(
                         fontFamily: "Poppins",
                         fontSize: 14,
-                        color: black,
+                        color: color,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -91,7 +90,7 @@ class _LogInState extends State<LogIn> {
                           child: Text(
                             "Забыли пароль?",
                             style: TextStyle(
-                                color: black,
+                                color: color,
                                 decoration: TextDecoration.underline),
                           ),
                           onPressed: () {},
@@ -127,7 +126,7 @@ class _LogInState extends State<LogIn> {
                             style: TextStyle(
                                 fontFamily: "Abhaya",
                                 fontSize: 16,
-                                color: white,
+                                color: color,
                                 fontWeight: FontWeight.w700),
                           ),
                         ),
@@ -147,7 +146,7 @@ class _LogInState extends State<LogIn> {
                         fontFamily: "Abhaya",
                         fontSize: 14,
                         letterSpacing: 1,
-                        color: black1,
+                        color: color,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -162,7 +161,7 @@ class _LogInState extends State<LogIn> {
                           fontFamily: "Abhaya",
                           fontSize: 14,
                           letterSpacing: 1,
-                          color: black1,
+                          color: color,
                           fontWeight: FontWeight.w800,
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_centre/utils/theme/utils.dart';
 
 import '../color/colors.dart';
 
@@ -9,7 +10,7 @@ class FieldContent extends StatefulWidget {
     required this.hintText,
     required this.obscureText,
     this.suffixIcon,
-    this.controller,
+     this.controller,
     this.suffixIcons,
   }) : super(key: key);
   bool obscureText = false;
@@ -25,6 +26,7 @@ class FieldContent extends StatefulWidget {
 class _FieldContentState extends State<FieldContent> {
   @override
   Widget build(BuildContext context) {
+    final Color color = Utils(context).color;
     return TextField(
       controller: widget.controller,
       obscureText: widget.obscureText,
@@ -49,7 +51,7 @@ class _FieldContentState extends State<FieldContent> {
           fontFamily: "Poppins",
           fontSize: 12,
           letterSpacing: 1,
-          color: black1,
+                        color: color,
           fontWeight: FontWeight.w300,
         ),
         focusedBorder: OutlineInputBorder(

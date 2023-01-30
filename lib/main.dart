@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_centre/presentation/page/screen/onboarding_screen.dart';
+import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
 import 'package:shopping_centre/services/MyHttpOverrides.dart';
 import 'package:shopping_centre/provider/dark_theme_provider.dart';
+import 'package:shopping_centre/services/register_firebase/auth.dart';
 import 'package:shopping_centre/utils/theme/theme_data.dart';
 import 'data/firebase_options.dart';
 
@@ -13,7 +15,11 @@ void main() async {
   HttpOverrides.global = MyHttpOverrides();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).then((value) {
+    Get.put(UserController());
+    Get.put(AppController());
+  });
+
   runApp(MyApp());
 }
 
@@ -48,10 +54,10 @@ class _MyAppState extends State<MyApp> {
       ],
       child:
           Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
           debugShowCheckedModeBanner: false,
-          home: const OnboardingScreen(),
+          home: SignIn(),
         );
       }),
     );

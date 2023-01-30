@@ -1,5 +1,2 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-class FirebaseService {
-  CollectionReference users = FirebaseFirestore.instance.collection('user');
-}
+String SecretKey =
+    'sk_test_51MV7zFCVhoiJWAvrwVot7viJsBDeclYgbXLfLU2hkLXrcOSR4458q10jiVBeFIVnifVoUghpjw5I0U8aD2BCUUZO0088YKdnKY';

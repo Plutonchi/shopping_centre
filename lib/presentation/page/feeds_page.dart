@@ -30,10 +30,14 @@ class _FeedsState extends State<Feeds> {
     _scrollController.addListener(() async {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        _isLoading = true;
         limit += 10;
+        if (limit == 30) {
+          _isLoading = true;
+          setState(() {});
+          return;
+        }
         await getProducts();
-        _isLoading = false;
+        // _isLoading = true;
       }
     });
     super.didChangeDependencies();

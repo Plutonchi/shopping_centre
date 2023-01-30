@@ -13,37 +13,39 @@ class CategoryWidget extends StatelessWidget {
     Color color = Utils(context).color;
     Size size = MediaQuery.of(context).size;
     final categoriesModelProvider = Provider.of<CategoriesModel>(context);
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: FancyShimmerImage(
-              height: size.width * 0.30,
-              width: size.width * 0.30,
-              errorWidget: const Icon(
-                IconlyBold.danger,
-                color: Colors.red,
-                size: 28,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: FancyShimmerImage(
+                height: size.width * 0.30,
+                width: size.width * 0.30,
+                errorWidget: const Icon(
+                  IconlyBold.danger,
+                  color: Colors.red,
+                  size: 28,
+                ),
+                imageUrl: categoriesModelProvider.image.toString(),
+                boxFit: BoxFit.fill,
               ),
-              imageUrl: categoriesModelProvider.image.toString(),
-              boxFit: BoxFit.fill,
             ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Text(
-            categoriesModelProvider.name.toString(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: color,
+            const SizedBox(
+              height: 15,
             ),
-          ),
-        ],
+            Text(
+              categoriesModelProvider.name.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

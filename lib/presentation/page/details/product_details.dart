@@ -125,7 +125,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               return FancyShimmerImage(
                                 width: double.infinity,
                                 imageUrl:
-                                    productsModel!.images![index].toString(),
+                                    productsModel!.images!  [index].toString(),
                                 boxFit: BoxFit.fill,
                               );
                             },

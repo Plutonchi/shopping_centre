@@ -1,161 +1,188 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopping_centre/presentation/page/registration/login_page.dart';
+import 'package:shopping_centre/services/register_firebase/auth.dart';
+import 'package:shopping_centre/utils/theme/utils.dart';
 
 import '../../../utils/color/colors.dart';
 import '../../../utils/widgets/field_content.dart';
 
+class AppController extends GetxController {
+  static AppController instance = Get.find();
+  RxBool isLoginWidgetDisplayed = true.obs;
+
+  changeDIsplayedAuthWidget() {
+    isLoginWidgetDisplayed.value = !isLoginWidgetDisplayed.value;
+  }
+}
+
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  SignIn({super.key});
+  final AppController _appController = Get.find();
 
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+  UserController userController = UserController.instance;
   @override
   Widget build(BuildContext context) {
+    final Color color = Utils(context).color;
     return Scaffold(
-      backgroundColor: white,
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SizedBox(
-                  height: 28,
-                ),
-                Text(
-                  "Регистрация",
-                  style: TextStyle(
-                      fontFamily: "Abhaya",
-                      fontSize: 32,
-                      color: black,
-                      fontWeight: FontWeight.w700),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Obx(
+        () => Visibility(
+          visible: widget._appController.isLoginWidgetDisplayed.value,
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SingleChildScrollView(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      "Адрес электронной почты",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 14,
-                        color: black,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    FieldContent(
-                        obscureText: false,
-                        hintText: "Введите свой адрес электронной почты",
-                        icon: Icons.email_outlined),
-                    SizedBox(height: 24),
-                    Text(
-                      "Пароль",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 14,
-                        color: black,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    FieldContent(
-                        obscureText: true,
-                        hintText: "Введите ваш пароль",
-                        icon: Icons.lock_outline),
-                    SizedBox(
-                      height: 16,
+                    const SizedBox(
+                      height: 28,
                     ),
                     Text(
-                      "Подтвердить Пароль",
+                      "Регистрация",
                       style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 14,
-                        color: black,
-                        fontWeight: FontWeight.w400,
-                      ),
+                          fontFamily: "Abhaya",
+                          fontSize: 32,
+                          color: color,
+                          fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(
-                      height: 16,
+                    const SizedBox(
+                      height: 100,
                     ),
-                    FieldContent(
-                        obscureText: true,
-                        hintText: "Подтвердить Пароль",
-                        icon: Icons.lock_outline),
-                    SizedBox(height: 32),
-                    Center(
-                      child: Container(
-                        width: 180,
-                        height: 40,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: blueGrotto,
-                            elevation: 7,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Имя",
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 14,
+                            color: color,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        FieldContent(
+                            controller: userController.name,
+                            obscureText: false,
+                            hintText: "Напишите свое имя",
+                            icon: Icons.person),
+                        const SizedBox(height: 24),
+                        Text(
+                          "Адрес электронной почты",
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 14,
+                            color: color,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        FieldContent(
+                            controller: userController.email,
+                            obscureText: false,
+                            hintText: "Введите свой адрес электронной почты",
+                            icon: Icons.email_outlined),
+                        SizedBox(height: 24),
+                        Text(
+                          "Пароль",
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 14,
+                            color: color,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        FieldContent(
+                            controller: userController.password,
+                            obscureText: true,
+                            hintText: "Введите ваш пароль",
+                            icon: Icons.lock_outline),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Center(
+                          child: SizedBox(
+                            width: 180,
+                            height: 40,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                userController.signUp();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: blueGrotto,
+                                elevation: 7,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              child: Text(
+                                "Зарегистрироваться",
+                                style: TextStyle(
+                                    fontFamily: "Abhaya",
+                                    fontSize: 14,
+                                    color: color,
+                                    fontWeight: FontWeight.w700),
+                              ),
                             ),
                           ),
-                          child: Text(
-                            "Зарегистрироваться",
-                            style: TextStyle(
-                                fontFamily: "Abhaya",
-                                fontSize: 14,
-                                color: white,
-                                fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 70,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "У вас есть аккаунт?",
+                          style: TextStyle(
+                            fontFamily: "Abhaya",
+                            fontSize: 14,
+                            letterSpacing: 1,
+                            color: color,
+                            fontWeight: FontWeight.w800,
                           ),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 70,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "У вас есть аккаунт?",
-                      style: TextStyle(
-                        fontFamily: "Abhaya",
-                        fontSize: 14,
-                        letterSpacing: 1,
-                        color: black1,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    OutlinedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => LogIn()));
-                      },
-                      child: Text(
-                        "Вход",
-                        style: TextStyle(
-                          fontFamily: "Abhaya",
-                          fontSize: 16,
-                          letterSpacing: 1,
-                          color: black1,
-                          fontWeight: FontWeight.w800,
+                        OutlinedButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LogIn()));
+                          },
+                          child: Text(
+                            "Вход",
+                            style: TextStyle(
+                              fontFamily: "Abhaya",
+                              fontSize: 16,
+                              letterSpacing: 1,
+                              color: color,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
