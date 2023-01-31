@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
-
-import '../../provider/dark_theme_provider.dart';
-import '../../utils/widgets/text_widgets.dart';
+import 'package:shopping_centre/controller/controllers.dart';
+import '../../../provider/dark_theme_provider.dart';
+import '../../../utils/widgets/text_widgets.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
@@ -40,7 +40,7 @@ class _UserScreenState extends State<UserScreen> {
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "MyName",
+                        text: "123",
                         style: TextStyle(
                           color: color,
                           fontSize: 25,
@@ -58,7 +58,7 @@ class _UserScreenState extends State<UserScreen> {
                   height: 5,
                 ),
                 TextWidgets(
-                  text: "email@email.com",
+                  text: "sss",
                   color: color,
                   size: 18,
                 ),
@@ -161,7 +161,9 @@ class _UserScreenState extends State<UserScreen> {
                 child: Text("Отмена"),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  userController.signOut();
+                },
                 child: Text("Ок"),
               ),
             ],

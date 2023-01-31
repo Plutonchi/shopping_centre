@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_centre/presentation/page/cart.dart';
-import 'package:shopping_centre/presentation/page/categories.dart';
-import 'package:shopping_centre/presentation/page/home_page.dart';
-import 'package:shopping_centre/presentation/page/user.dart';
+import 'package:shopping_centre/presentation/page/screen/user.dart';
+
 import 'package:shopping_centre/provider/dark_theme_provider.dart';
+
+import 'cart.dart';
+import 'categories.dart';
+import 'home_page.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -19,7 +21,7 @@ class _BottomBarState extends State<BottomBar> {
   final List<Map<String, dynamic>> _pages = [
     {'page': const HomePage(), 'title': 'Home Screen'},
     {'page': CatigoriesScreen(), 'title': 'Catigories Screen'},
-    {'page':  CardScreen(), 'title': 'Cart Screen'},
+    {'page': CardScreen(), 'title': 'Cart Screen'},
     {'page': const UserScreen(), 'title': 'User Screen'},
   ];
   void _selectedPage(int index) {

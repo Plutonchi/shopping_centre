@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:get/get.dart';
 import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
 import 'package:shopping_centre/utils/theme/utils.dart';
+import '../../../controller/authController.dart';
 import '../../../utils/color/colors.dart';
 import '../../../utils/widgets/field_content.dart';
-import '../btn_bar.dart';
 
 class LogIn extends StatefulWidget {
-  const LogIn({super.key});
+  LogIn({super.key});
+
+  RxBool isLoginWidgetDisplayed = true.obs;
+
+  changeDIsplayedAuthWidget() {
+    isLoginWidgetDisplayed.value = !isLoginWidgetDisplayed.value;
+  }
 
   @override
   State<LogIn> createState() => _LogInState();
@@ -17,6 +23,7 @@ class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
+    UserController userController = UserController.instance;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
@@ -58,6 +65,7 @@ class _LogInState extends State<LogIn> {
                       height: 16,
                     ),
                     FieldContent(
+                        controller: userController.email,
                         obscureText: false,
                         hintText: "Введите свой адрес электронной почты",
                         icon: Icons.email_outlined),
@@ -77,6 +85,7 @@ class _LogInState extends State<LogIn> {
                       height: 16,
                     ),
                     FieldContent(
+                        controller: userController.password,
                         obscureText: true,
                         hintText: "Введите ваш пароль",
                         icon: Icons.lock_outline),
@@ -106,13 +115,7 @@ class _LogInState extends State<LogIn> {
                         height: 40,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              PageTransition(
-                                child: const BottomBar(),
-                                type: PageTransitionType.fade,
-                              ),
-                            );
+                            userController.signIn();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: blueGrotto,

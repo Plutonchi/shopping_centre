@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopping_centre/controller/controllers.dart';
 import 'package:shopping_centre/presentation/page/registration/login_page.dart';
-import 'package:shopping_centre/services/register_firebase/auth.dart';
+import 'package:shopping_centre/controller/authController.dart';
 import 'package:shopping_centre/utils/theme/utils.dart';
 
 import '../../../utils/color/colors.dart';
 import '../../../utils/widgets/field_content.dart';
 
-class AppController extends GetxController {
-  static AppController instance = Get.find();
-  RxBool isLoginWidgetDisplayed = true.obs;
-
-  changeDIsplayedAuthWidget() {
-    isLoginWidgetDisplayed.value = !isLoginWidgetDisplayed.value;
-  }
-}
-
 class SignIn extends StatefulWidget {
   SignIn({super.key});
-  final AppController _appController = Get.find();
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -33,7 +24,7 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Obx(
         () => Visibility(
-          visible: widget._appController.isLoginWidgetDisplayed.value,
+          visible: appController.isLoginWidgetDisplayed.value,
           child: Center(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../data/service/api_handler.dart';
-import '../../utils/theme/utils.dart';
-import '../../utils/widgets/on_sale_widgets.dart';
-import '../model/products_model.dart';
+import '../../../data/service/api_handler.dart';
+import '../../../utils/theme/utils.dart';
+import '../../../utils/widgets/on_sale_widgets.dart';
+import '../../model/products_model.dart';
 
 class Feeds extends StatefulWidget {
   const Feeds({

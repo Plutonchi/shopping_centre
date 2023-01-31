@@ -3,11 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
+import 'package:shopping_centre/presentation/page/screen/startedPage/onboarding_screen.dart';
 import 'package:shopping_centre/services/MyHttpOverrides.dart';
 import 'package:shopping_centre/provider/dark_theme_provider.dart';
-import 'package:shopping_centre/services/register_firebase/auth.dart';
+import 'package:shopping_centre/controller/authController.dart';
 import 'package:shopping_centre/utils/theme/theme_data.dart';
+import 'controller/appController.dart';
 import 'data/firebase_options.dart';
 
 void main() async {
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         return GetMaterialApp(
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
           debugShowCheckedModeBanner: false,
-          home: SignIn(),
+          home: OnboardingScreen(),
         );
       }),
     );

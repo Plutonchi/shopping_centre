@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_centre/presentation/model/onboard.dart';
-
-import '../../../utils/color/colors.dart';
-import '../../../utils/widgets/dotindicator.dart';
-import '../../../utils/widgets/onboarding_content.dart';
-import '../registration/login_page.dart';
+import '../../../../utils/color/colors.dart';
+import '../../../../utils/widgets/dotindicator.dart';
+import '../../../../utils/widgets/onboarding_content.dart';
+import '../../registration/login_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -30,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
+    return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,

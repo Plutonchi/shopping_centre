@@ -5,10 +5,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
-import 'package:shopping_centre/presentation/page/home_page.dart';
-import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
-
-import '../../presentation/model/user_model.dart';
+import 'package:shopping_centre/presentation/page/registration/login_page.dart';
+import '../presentation/model/user_model.dart';
+import '../presentation/page/screen/btn_bar.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 final Future<FirebaseApp> initialization = Firebase.initializeApp();
@@ -28,7 +27,7 @@ class UserController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    firebaseUser = Rx<User>(auth.currentUser!);
+    firebaseUser = Rx<User?>(auth.currentUser);
     firebaseUser!.bindStream(auth.userChanges());
     ever(firebaseUser!, _setInitialScreen);
   }
@@ -36,12 +35,12 @@ class UserController extends GetxController {
   _setInitialScreen(User? user) {
     if (user == null) {
       Get.offAll(
-        () =>  SignIn(),
+        () => LogIn(),
       );
     } else {
       userModel.bindStream(listenToUser());
       Get.offAll(
-        () => const HomePage(),
+        () => const BottomBar(),
       );
     }
   }

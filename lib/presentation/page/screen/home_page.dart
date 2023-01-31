@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 import 'package:shopping_centre/data/service/api_handler.dart';
 import 'package:shopping_centre/presentation/model/products_model.dart';
-import 'package:shopping_centre/presentation/page/feeds_page.dart';
-
-import '../../utils/color/colors.dart';
-import '../../utils/theme/utils.dart';
-import '../../utils/widgets/feeds_gred_widger.dart';
+import '../../../utils/color/colors.dart';
+import '../../../utils/theme/utils.dart';
+import '../../../utils/widgets/feeds_gred_widger.dart';
+import 'feeds_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

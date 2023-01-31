@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:shopping_centre/data/service/api_handler.dart';
 import 'package:shopping_centre/presentation/model/catigories.dart';
 
-import '../../utils/theme/utils.dart';
-import '../../utils/widgets/catigories_widget.dart';
-import '../../utils/widgets/text_widgets.dart';
+import '../../../utils/theme/utils.dart';
+import '../../../utils/widgets/catigories_widget.dart';
+import '../../../utils/widgets/text_widgets.dart';
 
 class CatigoriesScreen extends StatelessWidget {
   const CatigoriesScreen({super.key});

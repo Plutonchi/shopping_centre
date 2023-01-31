@@ -4,7 +4,7 @@ class UserModel {
   String ID = 'id';
   String NAME = "name";
   String EMAIL = "email";
-  String CART = 'cart';
+  // String CART = 'cart';
 
   //////
 
