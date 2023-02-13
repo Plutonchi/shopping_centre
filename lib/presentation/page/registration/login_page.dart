@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopping_centre/presentation/page/registration/register_constans_widget/register_password_widget.dart';
 import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
 import 'package:shopping_centre/utils/theme/utils.dart';
 import '../../../controller/authController.dart';
@@ -84,11 +85,12 @@ class _LogInState extends State<LogIn> {
                     SizedBox(
                       height: 16,
                     ),
-                    FieldContent(
-                        controller: userController.password,
-                        obscureText: true,
-                        hintText: "Введите ваш пароль",
-                        icon: Icons.lock_outline),
+                    RegisterPasswordWidget(),
+                    // FieldContent(
+                    //     controller: userController.password,
+                    //     obscureText: true,
+                    //     hintText: "Введите ваш пароль",
+                    //     icon: Icons.lock_outline),
                     SizedBox(
                       height: 11,
                     ),

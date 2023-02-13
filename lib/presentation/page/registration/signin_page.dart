@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shopping_centre/controller/controllers.dart';
 import 'package:shopping_centre/presentation/page/registration/login_page.dart';
 import 'package:shopping_centre/controller/authController.dart';
+import 'package:shopping_centre/presentation/page/registration/register_constans_widget/register_password_widget.dart';
 import 'package:shopping_centre/utils/theme/utils.dart';
 
 import '../../../utils/color/colors.dart';
@@ -99,11 +100,7 @@ class _SignInState extends State<SignIn> {
                         const SizedBox(
                           height: 16,
                         ),
-                        FieldContent(
-                            controller: userController.password,
-                            obscureText: true,
-                            hintText: "Введите ваш пароль",
-                            icon: Icons.lock_outline),
+                        RegisterPasswordWidget(),
                         const SizedBox(
                           height: 16,
                         ),
