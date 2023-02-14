@@ -10,10 +10,12 @@ class FieldContent extends StatefulWidget {
     required this.hintText,
     required this.obscureText,
     this.suffixIcon,
-     this.controller,
+    this.controller,
     this.suffixIcons,
   }) : super(key: key);
   bool obscureText = false;
+  String? password;
+  bool isVisible = true;
   final IconData icon;
   final String hintText;
   final IconData? suffixIcon;
@@ -28,6 +30,7 @@ class _FieldContentState extends State<FieldContent> {
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
     return TextField(
+      onChanged: (value) {},
       controller: widget.controller,
       obscureText: widget.obscureText,
       decoration: InputDecoration(
@@ -51,7 +54,7 @@ class _FieldContentState extends State<FieldContent> {
           fontFamily: "Poppins",
           fontSize: 12,
           letterSpacing: 1,
-                        color: color,
+          color: color,
           fontWeight: FontWeight.w300,
         ),
         focusedBorder: OutlineInputBorder(
