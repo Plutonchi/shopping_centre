@@ -22,9 +22,9 @@ class UserModel {
   });
 
   UserModel.fromSnapshot(DocumentSnapshot snapshot) {
-    name = snapshot.get(NAME);
-    email = snapshot.get(EMAIL);
-    id = snapshot.get(ID);
+    // name = snapshot.get(NAME);
+    // email = snapshot.get(EMAIL);
+    // id = snapshot.get(ID);
     // cart = _convertCartItems(snapshot.data[CART] ?? []);
   }
 }
