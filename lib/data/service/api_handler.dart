@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
-import '../../presentation/model/catigories.dart';
+import '../../presentation/model/catigories_model.dart';
 import '../../presentation/model/products_model.dart';
 import '../../utils/api_const/api_const.dart';
 

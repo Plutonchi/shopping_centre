@@ -9,7 +9,7 @@ import '../../../utils/color/colors.dart';
 import '../../../utils/widgets/field_content.dart';
 
 class SignIn extends StatefulWidget {
-  SignIn({super.key});
+  const SignIn({super.key});
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -86,7 +86,7 @@ class _SignInState extends State<SignIn> {
                             obscureText: false,
                             hintText: "Введите свой адрес электронной почты",
                             icon: Icons.email_outlined),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         Text(
                           "Пароль",
                           style: TextStyle(
@@ -135,7 +135,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 70,
                     ),
                     Row(

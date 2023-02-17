@@ -8,7 +8,7 @@ import 'package:shopping_centre/presentation/model/products_model.dart';
 import '../../../utils/color/colors.dart';
 import '../../../utils/theme/utils.dart';
 import '../../../utils/widgets/feeds_gred_widger.dart';
-import 'feeds_page.dart';
+import 'all_products_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -52,12 +52,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
-    Size size = Utils(context).Screensize;
+    Size size = Utils(context).screensize;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        title: Container(
+        title: SizedBox(
           width: size.width,
           child: Column(
             children: [
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                   controller: _textEditingController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(),
+                    contentPadding: const EdgeInsets.symmetric(),
                     fillColor: blueGrotto.withOpacity(0.16),
                     filled: true,
                     prefixIcon: Icon(
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
                   return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: CircleAvatar(
                       radius: 35,
                       backgroundImage: AssetImage(
@@ -165,12 +165,12 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             PageTransition(
-                              child: Feeds(),
+                              child: const Feeds(),
                               type: PageTransitionType.fade,
                             ),
                           );
                         },
-                        child: Text("Просмотреть все"),
+                        child: const Text("Просмотреть все"),
                       ),
                     ],
                   ),

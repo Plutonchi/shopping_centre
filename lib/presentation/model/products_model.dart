@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'catigories.dart';
+import 'catigories_model.dart';
 
 class ProductsModel with ChangeNotifier {
   int? id;

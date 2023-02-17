@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, unused_element
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:shopping_centre/presentation/page/registration/login_page.dart';
 import '../presentation/model/user_model.dart';
-import '../presentation/page/screen/btn_bar.dart';
+import '../presentation/page/screen/selected_page.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 final Future<FirebaseApp> initialization = Firebase.initializeApp();

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_centre/data/service/api_handler.dart';
-import 'package:shopping_centre/presentation/model/catigories.dart';
+import 'package:shopping_centre/presentation/model/catigories_model.dart';
 
 import '../../../utils/theme/utils.dart';
 import '../../../utils/widgets/catigories_widget.dart';
-import '../../../utils/widgets/text_widgets.dart';
+import '../../../utils/widgets/text_description_widget.dart';
 
 class CatigoriesScreen extends StatelessWidget {
   const CatigoriesScreen({super.key});
@@ -26,7 +26,9 @@ class CatigoriesScreen extends StatelessWidget {
         ),
       ),
       body: FutureBuilder<List<CategoriesModel>>(
-          future: APIHandler.getAllCategories(),
+          future: APIHandler.getAllCategories(
+            
+          ),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(

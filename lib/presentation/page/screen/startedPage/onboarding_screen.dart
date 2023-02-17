@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_centre/presentation/model/onboard.dart';
+import 'package:shopping_centre/presentation/model/onboard_List.dart';
 import '../../../../utils/color/colors.dart';
 import '../../../../utils/widgets/dotindicator.dart';
 import '../../../../utils/widgets/onboarding_content.dart';
@@ -33,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: SafeArea(
           child: Column(
             children: [
@@ -57,7 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ...List.generate(
                     demoData.length,
                     (index) => Padding(
-                        padding: EdgeInsets.only(right: 4),
+                        padding: const EdgeInsets.only(right: 4),
                         child: DotIndicator(isActive: index == _pageIndex)),
                   ),
                   const Spacer(),
@@ -73,11 +73,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           );
                         }
                         _pageController.nextPage(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.ease);
                       },
                       style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(), backgroundColor: blueg),
+                          shape: const CircleBorder(), backgroundColor: blueg),
                       child: Icon(Icons.arrow_forward_ios, color: white),
                     ),
                   ),

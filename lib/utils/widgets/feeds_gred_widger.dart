@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../presentation/model/products_model.dart';
-import 'on_sale_widgets.dart';
+import 'product_widgets.dart';
 
 class FeedsGridWidget extends StatelessWidget {
   const FeedsGridWidget({Key? key, required this.productsList})
@@ -16,10 +16,10 @@ class FeedsGridWidget extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           itemCount: productsList.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 40,
-              mainAxisSpacing: 4,
-              childAspectRatio: 110 / 140),
+            crossAxisCount: 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 10,
+          ),
           itemBuilder: (ctx, index) {
             return ChangeNotifierProvider.value(
               value: productsList[index],

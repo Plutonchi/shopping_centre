@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../color/colors.dart';
 
 class DotIndicator extends StatelessWidget {
-  DotIndicator({
+  const DotIndicator({
     Key? key,
     this.isActive = false,
   }) : super(key: key);
@@ -11,7 +11,7 @@ class DotIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       height: isActive ? 12 : 4,
       width: 4,
       decoration: BoxDecoration(

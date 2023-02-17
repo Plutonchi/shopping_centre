@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_centre/controller/controllers.dart';
-import '../../../provider/dark_theme_provider.dart';
-import '../../../utils/widgets/text_widgets.dart';
+import '../../../theme_provider/dark_theme_provider.dart';
+import '../../../utils/widgets/text_description_widget.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
@@ -48,7 +48,6 @@ class _UserScreenState extends State<UserScreen> {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            print("MyName s");
                           },
                       ),
                     ],
@@ -76,7 +75,7 @@ class _UserScreenState extends State<UserScreen> {
                   color: color,
                   subtitle: "Подзаголовок",
                   onPressed: () {},
-                  icon: IconlyLight.profile,
+                  icon: IconlyLight.location,
                 ),
                 _listTiles(
                   color: color,
@@ -92,21 +91,23 @@ class _UserScreenState extends State<UserScreen> {
                 ),
                 _listTiles(
                   color: color,
-                  title: "Просмотрено",
-                  icon: IconlyLight.show,
+                  title: "Личные данные",
+                  icon: IconlyLight.setting,
                   onPressed: () {},
                 ),
                 _listTiles(
                   color: color,
-                  title: "Личные данные",
-                  icon: IconlyLight.setting,
-                  onPressed: () {},
+                  title: "Выйти из аккаунта",
+                  icon: IconlyLight.logout,
+                  onPressed: () {
+                    showDiologLogOut();
+                  },
                 ),
                 SwitchListTile(
                   title: TextWidgets(
                     text: themeState.getDarkTheme
                         ? "Темный режим"
-                        : "Светлый режим",
+                        : "Светлый режим",  
                     color: color,
                     isTitle: true,
                     size: 22,
@@ -119,14 +120,6 @@ class _UserScreenState extends State<UserScreen> {
                     setState(() {
                       themeState.setDarkTheme = value;
                     });
-                  },
-                ),
-                _listTiles(
-                  color: color,
-                  title: "Выйти из аккаунта",
-                  icon: IconlyLight.logout,
-                  onPressed: () {
-                    showDiologLogOut();
                   },
                 ),
               ],
@@ -143,11 +136,11 @@ class _UserScreenState extends State<UserScreen> {
         builder: (context) {
           return AlertDialog(
             title: Row(
-              children: [
+              children: const [
                 Text("Выйти"),
               ],
             ),
-            content: Text(
+            content: const Text(
               "Вы уверены, что хотите выйти?",
               style: TextStyle(fontSize: 15),
             ),
@@ -158,13 +151,13 @@ class _UserScreenState extends State<UserScreen> {
                     Navigator.pop(context);
                   }
                 },
-                child: Text("Отмена"),
+                child: const Text("Отмена"),
               ),
               TextButton(
                 onPressed: () {
                   userController.signOut();
                 },
-                child: Text("Ок"),
+                child: const Text("Ок"),
               ),
             ],
           );
@@ -187,13 +180,13 @@ class _UserScreenState extends State<UserScreen> {
       ),
       subtitle: TextWidgets(
         color: color,
-        text: subtitle == null ? "" : subtitle,
+        text: subtitle ?? "",
         size: 18,
       ),
       leading: Icon(
         icon,
       ),
-      trailing: Icon(
+      trailing: const Icon(
         IconlyLight.arrow_right_2,
       ),
       onTap: onPressed,

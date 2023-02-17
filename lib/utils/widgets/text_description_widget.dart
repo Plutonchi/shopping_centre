@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/widgets.dart';
 
 class TextWidgets extends StatelessWidget {
@@ -17,8 +19,8 @@ class TextWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text!,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        overflow: TextOverflow.visible,
         color: color,
         fontSize: size,
         fontWeight: isTitle ? FontWeight.bold : FontWeight.normal,

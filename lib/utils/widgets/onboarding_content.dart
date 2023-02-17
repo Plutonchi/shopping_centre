@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OnboardingContent extends StatelessWidget {
-  OnboardingContent({
+  const OnboardingContent({
     Key? key,
     required this.image,
     required this.title,
@@ -15,11 +15,11 @@ class OnboardingContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Spacer(),
+        const Spacer(),
         SvgPicture.asset(
           image,
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           title,
           textAlign: TextAlign.center,
@@ -35,7 +35,7 @@ class OnboardingContent extends StatelessWidget {
           description,
           textAlign: TextAlign.center,
         ),
-        Spacer(),
+        const Spacer(),
       ],
     );
   }

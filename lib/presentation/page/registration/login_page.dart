@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_centre/presentation/page/registration/signin_page.dart';
@@ -28,13 +30,13 @@ class _LogInState extends State<LogIn> {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Text(
@@ -45,7 +47,7 @@ class _LogInState extends State<LogIn> {
                       color: color,
                       fontWeight: FontWeight.w700),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 140,
                 ),
                 Column(
@@ -61,7 +63,7 @@ class _LogInState extends State<LogIn> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     FieldContent(
@@ -69,7 +71,7 @@ class _LogInState extends State<LogIn> {
                         obscureText: false,
                         hintText: "Введите свой адрес электронной почты",
                         icon: Icons.email_outlined),
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
                     Text(
@@ -81,7 +83,7 @@ class _LogInState extends State<LogIn> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     FieldContent(
@@ -89,7 +91,7 @@ class _LogInState extends State<LogIn> {
                         obscureText: true,
                         hintText: "Введите ваш пароль",
                         icon: Icons.lock_outline),
-                    SizedBox(
+                    const SizedBox(
                       height: 11,
                     ),
                     Row(
@@ -106,11 +108,11 @@ class _LogInState extends State<LogIn> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     Center(
-                      child: Container(
+                      child: SizedBox(
                         width: 180,
                         height: 40,
                         child: ElevatedButton(
@@ -137,7 +139,7 @@ class _LogInState extends State<LogIn> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 ),
                 Row(
@@ -156,7 +158,7 @@ class _LogInState extends State<LogIn> {
                     OutlinedButton(
                       onPressed: () {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
+                            MaterialPageRoute(builder: (context) => const SignIn()));
                       },
                       child: Text(
                         "Регистрация",

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_centre/presentation/page/screen/user.dart';
+import 'package:shopping_centre/presentation/page/screen/user_page.dart';
 
-import 'package:shopping_centre/provider/dark_theme_provider.dart';
+import 'package:shopping_centre/theme_provider/dark_theme_provider.dart';
 
-import 'cart.dart';
-import 'categories.dart';
+import 'cart_page.dart';
+import 'categories_page.dart';
 import 'home_page.dart';
 
 class BottomBar extends StatefulWidget {
@@ -20,8 +20,8 @@ class _BottomBarState extends State<BottomBar> {
   int _selectedIndex = 0;
   final List<Map<String, dynamic>> _pages = [
     {'page': const HomePage(), 'title': 'Home Screen'},
-    {'page': CatigoriesScreen(), 'title': 'Catigories Screen'},
-    {'page': CardScreen(), 'title': 'Cart Screen'},
+    {'page': const CatigoriesScreen(), 'title': 'Catigories Screen'},
+    {'page': const CardScreen(), 'title': 'Cart Screen'},
     {'page': const UserScreen(), 'title': 'User Screen'},
   ];
   void _selectedPage(int index) {
@@ -33,14 +33,14 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
-    bool _isDark = themeState.getDarkTheme;
+    bool isDark = themeState.getDarkTheme;
 
     return Scaffold(
       body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: _isDark ? Colors.blue : Colors.black,
-        backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
-        selectedItemColor: _isDark ? Colors.lightBlue.shade200 : Colors.orange,
+        unselectedItemColor: isDark ? Colors.blue : Colors.black,
+        backgroundColor: isDark ? Theme.of(context).cardColor : Colors.white,
+        selectedItemColor: isDark ? Colors.lightBlue.shade200 : Colors.orange,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:shopping_centre/utils/theme/utils.dart';
 
@@ -12,7 +14,7 @@ class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
-    final Size size = Utils(context).Screensize;
+    final Size size = Utils(context).screensize;
     return Scaffold(
       appBar: AppBar(
         title: Text(

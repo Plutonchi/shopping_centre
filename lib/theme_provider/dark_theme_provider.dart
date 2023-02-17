@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shopping_centre/services/dark_theme_prefs.dart';
+import 'package:shopping_centre/theme_provider/dark_theme_prefs.dart';
 
 class DarkThemeProvider with ChangeNotifier {
   DarkThemePrefs darkThemePrefs = DarkThemePrefs();
